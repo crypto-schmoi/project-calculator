@@ -1,20 +1,20 @@
 // Creates a function for addition  on the calculator
-const add = function (a, b) {
+let add = function (a, b) {
     return a + b;
 }
 
 // Creates a function for subtraction on the calculator
-const subtract = function (a, b) {
+let subtract = function (a, b) {
     return a - b;
 }
   
 // Creates a function for multiplication on the calculator
-const multiply = function (a, b) {
+let multiply = function (a, b) {
     return a * b;
 } 
 
 // Creates a function for division on the calculator
-const divide = function (a, b) {
+let divide = function (a, b) {
     return a / b;
 } 
 
@@ -28,6 +28,10 @@ let secondNumber = "";
 
 // Equation that calls the function when a particular operation type is selected
 let operate = function (firstNumber, operationType, secondNumber) {
+
+    firstNumber = parseFloat(firstNumber); // Convert strings to numbers
+    secondNumber = parseFloat(secondNumber);
+
     if (operationType === "+") {
         return (firstNumber + secondNumber);
     } else if (operationType === "-") {
@@ -37,13 +41,10 @@ let operate = function (firstNumber, operationType, secondNumber) {
     } else if (operationType === "/") {
         return (firstNumber / secondNumber);
     }
+    console.log('operate working')
 }
 
-// Create the functions that populate the display when you click the 
-// number buttons. You should be storing the ‘display value’ in a variable 
-// somewhere for use in the next step.
-
-const display = document.querySelector('display');
+const display = document.querySelector('.display');
 
 // Variables for the buttons on the calculator
 const zeroButton = document.querySelector('.zero');
@@ -67,50 +68,173 @@ const clearButton = document.querySelector('.clear');
 let displayValue = "";
 
 function updateDisplay() {
-    return displayValue;
+    let displayString = "";
+    if (firstNumber) {
+        displayString += firstNumber;
+    }
+    if (operationType) {
+        displayString += operationType;
+    }
+    if (displayValue) {
+        displayString += displayValue;
+    }
+    return displayString;
 }
+
+let isEnteringSecondNumber = false;
+
 
 // Event listeners for the buttons on the calculator to update the display when a button is clicked
 zeroButton.addEventListener('click', function() {
-    displayValue += '0';
+    if (isEnteringSecondNumber) {
+        displayValue += '0';
+        secondNumber += '0'; // Store in the secondNumber
+    } else {
+        firstNumber += '0'; // Store in the firstNumber
+    }
+    display.textContent = updateDisplay();
 });
 
 oneButton.addEventListener('click', function() {
-    displayValue += '1';
+    if (isEnteringSecondNumber) {
+        displayValue += '1';
+        secondNumber += '1'; // Store in the secondNumber
+    } else {
+        firstNumber += '1'; // Store in the firstNumber
+    }
+    display.textContent = updateDisplay();
 });
 
 twoButton.addEventListener('click', function() {
-    displayValue += '2';
+    if (isEnteringSecondNumber) {
+        displayValue += '2';
+        secondNumber += '2'; // Store in the secondNumber
+    } else {
+        firstNumber += '2'; // Store in the firstNumber
+    }
+    display.textContent = updateDisplay();
 });
 
 threeButton.addEventListener('click', function() {
-    displayValue += '3';
+    if (isEnteringSecondNumber) {
+        displayValue += '3';
+        secondNumber += '3'; // Store in the secondNumber
+    } else {
+        firstNumber += '3'; // Store in the firstNumber
+    }
+    display.textContent = updateDisplay();
 });
 
 fourButton.addEventListener('click', function() {
-    displayValue += '4';
+    if (isEnteringSecondNumber) {
+        displayValue += '4';
+        secondNumber += '4'; // Store in the secondNumber
+    } else {
+        firstNumber += '4'; // Store in the firstNumber
+    }
+    display.textContent = updateDisplay();
 });
 
 fiveButton.addEventListener('click', function() {
-    displayValue += '5';
+    if (isEnteringSecondNumber) {
+        displayValue += '5';
+        secondNumber += '5'; // Store in the secondNumber
+    } else {
+        firstNumber += '5'; // Store in the firstNumber
+    }
+    display.textContent = updateDisplay();
 });
 
 sixButton.addEventListener('click', function() {
-    displayValue += '6';
+    if (isEnteringSecondNumber) {
+        displayValue += '6';
+        secondNumber += '6'; // Store in the secondNumber
+    } else {
+        firstNumber += '6'; // Store in the firstNumber
+    }
+    display.textContent = updateDisplay();
 });
 
 sevenButton.addEventListener('click', function() {
-    displayValue += '7';
+    if (isEnteringSecondNumber) {
+        displayValue += '7';
+        secondNumber += '7'; // Store in the secondNumber
+    } else {
+        firstNumber += '7'; // Store in the firstNumber
+    }
+    display.textContent = updateDisplay();
 });
 
 eightButton.addEventListener('click', function() {
-    displayValue += '8';
+    if (isEnteringSecondNumber) {
+        displayValue += '8';
+        secondNumber += '8'; // Store in the secondNumber
+    } else {
+        firstNumber += '8'; // Store in the firstNumber
+    }
+    display.textContent = updateDisplay();
 });
 
 nineButton.addEventListener('click', function() {
-    displayValue += '9';
+    if (isEnteringSecondNumber) {
+        displayValue += '9';
+        secondNumber += '9'; // Store in the secondNumber
+    } else {
+        firstNumber += '9'; // Store in the firstNumber
+    }
+    display.textContent = updateDisplay();
+});
+
+additionButton.addEventListener('click', function() {
+    if (firstNumber !== "") {
+        operationType = "+";
+        isEnteringSecondNumber = true;
+        display.textContent = updateDisplay();
+    }
+});
+
+subtractButton.addEventListener('click', function() {
+    if (firstNumber !== "") {
+        operationType = "-";
+        isEnteringSecondNumber = true;
+        display.textContent = updateDisplay();
+    }
+});
+
+multiplyButton.addEventListener('click', function() {
+    if (firstNumber !== "") {
+        operationType = "*";
+        isEnteringSecondNumber = true;
+        display.textContent = updateDisplay();
+    }
+});
+
+divisionButton.addEventListener('click', function() {
+    if (firstNumber !== "") {
+        operationType = "/";
+        isEnteringSecondNumber = true;
+        display.textContent = updateDisplay();
+    }
 });
 
 equalsButton.addEventListener('click', function() {
-    return operate;
+    if (firstNumber !== "" && operationType !== "" && secondNumber !== "") {
+        secondNumber = parseFloat(displayValue); // Set the second number as the current display value
+        const result = operate(firstNumber, operationType, secondNumber);
+        displayValue = result.toString();
+        display.textContent = displayValue; // Update the display with the result
+        firstNumber = ""; 
+        operationType = ""; // Reset operationType
+        secondNumber = ""; // Reset secondNumber
+        isEnteringSecondNumber = false; // Reset to entering the first number
+    }
+});
+
+
+clearButton.addEventListener('click', function() {
+    displayValue = "";
+    firstNumber = "";
+    operationType = "";
+    secondNumber = "";
+    display.textContent = updateDisplay();
 });
