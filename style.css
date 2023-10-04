@@ -1,0 +1,160 @@
+.display {
+    border: 6px solid black;
+    height: 100px;
+    font-size: 50px;
+    text-align: right;
+    background-color: white;
+}
+
+.calculator {
+    border: 6px solid black;
+    width: 378px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 10px 10px 5px rgb(77, 76, 76);
+    background-color: rgba(142, 113, 169, 0.672);
+}
+
+/* Styling for the buttons */
+    /* Row 1 of buttons */
+    .one {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .two {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .three {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .addition {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    /* Row 2 of buttons */
+    .four {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .five {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .six {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .subtraction {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    /* Row 3 of buttons */
+    .seven {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .eight {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .nine {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .multiplication {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    /* Row 4 of buttons */
+    .equals {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .zero {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+    .division {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+
+.clear {
+    width: 360px;
+    height: 20px;
+}
+
+.clear-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+<!-- HTML !-->
+<button class="button-42" role="button">Button 42</button>
+
+/* CSS */
+.button-42 {
+  background-color: initial;
+  background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 9;
+  border: 0;
+  transition: box-shadow .2s;
+}
+
+.button-42:hover {
+  box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+}
