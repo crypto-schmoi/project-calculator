@@ -18,7 +18,7 @@ let divide = function (a, b) {
     return a / b;
 } 
 
-// Variables for the calulcator operation
+// // Variables for the calulcator operation
 let firstNumber = "";
 
 let operationType = "";
@@ -33,14 +33,18 @@ let operate = function (firstNumber, operationType, secondNumber) {
     secondNumber = parseFloat(secondNumber);
 
     if (operationType === "+") {
-        return (firstNumber + secondNumber);
+        return (firstNumber + secondNumber).toFixed(2);
     } else if (operationType === "-") {
-        return (firstNumber - secondNumber); 
+        return (firstNumber - secondNumber).toFixed(2); 
     } else if (operationType === "*") {
-        return (firstNumber * secondNumber); 
+        return (firstNumber * secondNumber).toFixed(2); 
     } else if (operationType === "/") {
-        return (firstNumber / secondNumber);
+        if (secondNumber === 0) {
+            return ("Sorry no can do"); // Display error message if divided by 0
+        }
+        return (firstNumber / secondNumber).toFixed(2);
     }
+
     console.log('operate working')
 }
 
