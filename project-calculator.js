@@ -67,9 +67,11 @@ const subtractButton = document.querySelector('.subtraction');
 const multiplyButton = document.querySelector('.multiplication');
 const divisionButton = document.querySelector('.division');
 const clearButton = document.querySelector('.clear');
+const decimalButton = document.querySelector('.decimal')
 
 // Variable for storing the display value to track digits being entered
 let displayValue = "";
+let isEnteringSecondNumber = false; //Variable to check if second number is being entered
 
 function updateDisplay() {
     let displayString = "";
@@ -84,9 +86,6 @@ function updateDisplay() {
     }
     return displayString;
 }
-
-let isEnteringSecondNumber = false;
-
 
 // Event listeners for the buttons on the calculator to update the display when a button is clicked
 zeroButton.addEventListener('click', function() {
@@ -221,6 +220,24 @@ divisionButton.addEventListener('click', function() {
     }
 });
 
+// Event listener for the decimal button
+decimalButton.addEventListener('click', function() {
+    // Check if the user is entering the second number
+    if (isEnteringSecondNumber) {
+        // Check if a decimal point is already in the second number
+        if (!secondNumber.includes('.')) {
+            displayValue += '.';
+            secondNumber += '.';
+            display.textContent = updateDisplay();
+        }
+    } else {
+        // Check if a decimal point is already in the first number
+        if (!firstNumber.includes('.')) {
+            firstNumber += '.';
+            display.textContent = updateDisplay();
+        }
+    }
+});
 equalsButton.addEventListener('click', function() {
     if (firstNumber !== "" && operationType !== "" && secondNumber !== "") {
         secondNumber = parseFloat(displayValue); // Set the second number as the current display value
